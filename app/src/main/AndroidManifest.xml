@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="my.social.app">
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name="my.social.app.InstagramOffline"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--
+        android:icon="@mipmap/ic_launcher"
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="my.social.app.Map.MapsActivity"
+            android:label="@string/title_activity_maps">
+
+        </activity>
+        <activity
+            android:name="my.social.app.Messages.MessageActivity"
+            android:parentActivityName="my.social.app.Messages.ChatActivity" />
+        <activity
+            android:name="my.social.app.Messages.ChatActivity"
+            android:parentActivityName="my.social.app.Home" />
+        <activity android:name="my.social.app.Stories.StoryActivity" />
+        <activity android:name="my.social.app.Stories.AddStoryActivity" />
+        <activity android:name="my.social.app.Profile.FollowersFollowing" />
+        <activity android:name="my.social.app.Search.UserSearchViewPost" />
+        <activity android:name="my.social.app.Search.UserSearchProfileActivity" />
+        <activity android:name="my.social.app.Profile.ViewComments" />
+        <activity android:name="my.social.app.Post.PostActivity" />
+        <activity android:name="my.social.app.VerifyPhone" />
+        <activity android:name="my.social.app.Registration" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name="my.social.app.Login" />
+        <activity android:name="my.social.app.Profile.EditProfile" />
+        <activity android:name="my.social.app.Profile.Account_Settings" />
+        <activity
+            android:name="my.social.app.Home"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="my.social.app.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="my.social.app.Messages.Notification.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="my.social.app.Messages.Notification.MyFirebaseIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
